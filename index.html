@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Mobile Oil Change</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFB800; /* Amber - High Visibility */
+            --bg-dark: #121212; /* Deep Charcoal */
+            --card-bg: #1E1E1E;
+            --text-light: #F5F5F5;
+            --accent: #333333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
+
+        /* Branding Header */
+        header {
+            background: var(--bg-dark);
+            padding: 1.5rem 1rem 0.5rem 1rem;
+            text-align: center;
+        }
+
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-top: 2px;
+        }
+
+        /* Navigation Tabs */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(18, 18, 18, 0.95);
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--accent);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            color: var(--primary);
+            background: var(--accent);
+        }
+
+        /* Container & Sections */
+        .container { max-width: 1000px; margin: 1.5rem auto; padding: 0 1rem; }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Modern Styling Components */
+        .card { background: var(--card-bg); padding: 2rem; border-radius: 15px; border: 1px solid var(--accent); margin-bottom: 2rem; }
+        h1, h2 { color: var(--primary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .img-placeholder { background: #2A2A2A; border: 2px dashed #444; width: 100%; height: 250px; display: flex; align-items: center; justify-content: center; border-radius: 12px; margin: 1rem 0; color: #777; text-align: center; padding: 20px; }
+        
+        /* How It Works Grid */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .step { text-align: center; padding: 1rem; }
+        .step-num { font-size: 3rem; font-weight: 800; color: var(--primary); opacity: 0.3; }
+
+        /* Service List Styling */
+        .service-list { margin-top: 2rem; }
+        .service-item { border-left: 3px solid var(--primary); padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        .service-item h3 { margin-bottom: 0.3rem; font-size: 1.1rem; color: var(--text-light); }
+        .service-item p { font-size: 0.95rem; color: #ccc; }
+        .roadmap-card { border: 1px dashed var(--accent); border-radius: 8px; padding: 1rem; opacity: 0.8; text-align: center; }
+
+        /* Appointment Form */
+        .calendar-mock { background: #fff; color: #333; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .input-group { margin-bottom: 1.2rem; }
+        label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--primary); font-weight: 600; }
+        input, select, textarea { width: 100%; padding: 0.8rem; border-radius: 6px; border: 1px solid var(--accent); background: #2A2A2A; color: white; font-family: inherit; }
+        input:focus, select:focus { outline: 1px solid var(--primary); border-color: var(--primary); }
+        
+        button.submit-btn { background: var(--primary); color: #000; border: none; padding: 1rem 2rem; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 1rem; font-size: 1rem; }
+        button.submit-btn:hover { background: #e6a600; transform: translateY(-2px); }
+
+        /* Contact Page */
+        .contact-info { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        strong { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-name">Premier</div>
+        <div class="brand-subtitle">Mobile Oil Change LLC</div>
+    </header>
+
+    <nav>
+        <button class="tab-btn active" onclick="openTab(event, 'how-it-works')">How It Works</button>
+        <button class="tab-btn" onclick="openTab(event, 'services')">Services</button>
+        <button class="tab-btn" onclick="openTab(event, 'appointments')">Book Now</button>
+        <button class="tab-btn" onclick="openTab(event, 'about')">Our Story</button>
+        <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
+    </nav>
+
+    <div class="container">
+
+        <section id="how-it-works" class="tab-content active">
+            <div class="card">
+                <h2>Reclaim Your Saturday</h2>
+                <p>We don't just change oil; We give you back your time. No waiting rooms, no stale coffee, and zero upsells.</p>
+                <div class="img-placeholder">IMAGE: Clean, professional mobile setup</div>
+                <div class="grid-3">
+                    <div class="step">
+                        <div class="step-num">01</div>
+                        <h3>You Book</h3>
+                        <p>Pick a time and location that fits your schedule: home, office, or gym.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">02</div>
+                        <h3>We Service</h3>
+                        <p>We arrive on-site, collect your keys, and perform a professional, mess-free oil change while you stay productive.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">03</div>
+                        <h3>You Drive</h3>
+                        <p>We hand back your keys and send a digital invoice. Your car is ready to go, and your day was never interrupted.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="tab-content">
+            <div class="card">
+                <h2>Specialized Care. No Upsells.</h2>
+                <p>I focus on premium oil changes that come to you. You'll never get a high-pressure sales pitch for repairs you don't need—just honest, quality work.</p>
+                <div class="img-placeholder">IMAGE: Close-up of clean oil and tire pressure gauge</div>
+                <div class="service-list">
+                    <div class="service-item">
+                        <h3>The Professional Mobile Change</h3>
+                        <p>A complete on-site service featuring premium oil tailored to your vehicle (Full Synthetic, High-Mileage, or Conventional), a new filter, fluid top-offs, and a tire pressure calibration.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Fleet & Multi-Car Service</h3>
+                        <p>Maximize your convenience by having the whole family's vehicles or your business fleet serviced in one visit. Discounts available for 3+ vehicles.</p>
+                    </div>
+                </div>
+                <hr style="border: 0; border-top: 1px solid var(--accent); margin: 2rem 0;">
+                <h3 style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem;">Coming Soon</h3>
+                <div class="grid-3">
+                    <div class="roadmap-card">
+                        <h4>Brake Service</h4>
+                        <p style="font-size: 0.8rem; color: #aaa;">Pad replacement & sensor resets.</p>
+                    </div>
+                    <div class="roadmap-card">
+                        <h4>15-Point Health Check</h4>
+                        <p style="font-size: 0.8rem; color: #aaa;">A full digital report on your car's status.</p>
+                    </div>
+                    <div class="roadmap-card">
+                        <h4>Battery Care</h4>
+                        <p style="font-size: 0.8rem; color: #aaa;">Testing and terminal cleaning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="appointments" class="tab-content">
+            <div class="card">
+                <h2>Book Your Service</h2>
+                <div class="calendar-mock">
+                    <p style="text-align:center; font-weight:bold; margin-bottom: 0.5rem; color: #333;">Select Your Date & Preferred Time</p>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="date" id="service-date" style="background:#f0f0f0; color:#333; border: 1px solid #ccc;">
+                        <select id="service-time" style="background:#f0f0f0; color:#333; border: 1px solid #ccc;">
+                            <option>Morning (8am - 12pm)</option>
+                            <option>Afternoon (12pm - 4pm)</option>
+                            <option>Evening (4pm - 7pm)</option>
+                        </select>
+                    </div>
+                </div>
+                <form id="booking-form">
+                    <div class="grid-3">
+                        <div class="input-group"><label>Year</label><input type="text" placeholder="e.g. 2024"></div>
+                        <div class="input-group"><label>Make</label><input type="text" placeholder="e.g. Toyota"></div>
+                        <div class="input-group"><label>Model</label><input type="text" placeholder="e.g. Camry"></div>
+                    </div>
+                    <div class="grid-3">
+                        <div class="input-group"><label>Engine</label><input type="text" placeholder="e.g. 2.5L 4-Cyl"></div>
+                        <div class="input-group">
+                            <label>Oil Preference</label>
+                            <select>
+                                <option>Full Synthetic</option>
+                                <option>High-Mileage (75k+)</option>
+                                <option>Conventional</option>
+                                <option>I'm Not Sure</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group"><label>Service Location</label><input type="text" placeholder="Home or Office Address"></div>
+                    <div class="input-group"><label>Special Notes (Optional)</label><textarea rows="3"></textarea></div>
+                    <button type="button" class="submit-btn">Request Appointment</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="about" class="tab-content">
+            <div class="card">
+                <h2>The Premier Difference</h2>
+                <div class="img-placeholder">IMAGE: Personal Photo</div>
+                <p>Premier Mobile Oil Change was born out of a simple frustration: Why does a 20-minute oil change take up 2-hours at a dealership?</p>
+                <br>
+                <p>My passion for automotive work didn't start in a high-end shop—it started in a warehouse. After years in a fast-paced industrial environment, I found my fulfillment by working with my hands and keeping busy with tasks that required precision and care.</p>
+                <br>
+                <p>I know what it’s like to go in for a simple service and walk out two hours later after being hit with a list of "necessary" upsells. I knew there had to be a more practical, honest way to keep cars on the road.</p>
+                <br>
+                <div class="service-item">
+                    <h3>My Specialty</h3>
+                    <p>Because I am a dedicated owner-operator, your vehicle is never just another number in a bay. You get the peace of mind knowing the person you booked is the person doing the work. I take my time to ensure a mess-free, professional result while you enjoy the comfort of your home. <strong>No waiting rooms, no drive time, and absolutely no upsells.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="tab-content">
+            <div class="card">
+                <h2>Get In Touch</h2>
+                <p class="contact-info"><strong>Phone:</strong> (773) 892-9807</p>
+                <p class="contact-info"><strong>Email:</strong> premiermobileoil@gmail.com</p>
+                <p class="contact-info"><strong>Service Area:</strong> Chicago & Surrounding Suburbs</p>
+                <div class="img-placeholder">IMAGE: Service Radius Map</div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabBtns;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) { tabContent[i].classList.remove("active"); }
+            tabBtns = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtns.length; i++) { tabBtns[i].classList.remove("active"); }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
