@@ -126,30 +126,110 @@
 
     <div class="container">
 
-        <section id="how-it-works" class="tab-content active">
-            <div class="card">
-                <h2>Reclaim Your Saturday</h2>
-                <p>We don't just change oil; We give you back your time. No waiting rooms, no stale coffee, and zero upsells.</p>
-                <div class="img-placeholder">IMAGE: Clean, professional mobile setup</div>
-                <div class="grid-3">
-                    <div class="step">
-                        <div class="step-num">01</div>
-                        <h3>You Book</h3>
-                        <p>Pick a time and location that fits your schedule: home, office, or gym.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">02</div>
-                        <h3>We Service</h3>
-                        <p>We arrive on-site, collect your keys, and perform a professional, mess-free oil change while you stay productive.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">03</div>
-                        <h3>You Drive</h3>
-                        <p>We hand back your keys and send a digital invoice. Your car is ready to go, and your day was never interrupted.</p>
-                    </div>
+<section id="how-it-works" class="tab-content active">
+    <div class="card">
+        <h2 style="text-align: center;">The Seamless Service Experience</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">While I handle the dirty work, your life doesn't stop. Here is how we coexist on service day.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time-block">Phase 01</div>
+                <div class="content-block">
+                    <h3>The Coordination</h3>
+                    <p>You book online in 60 seconds. I'll send a confirmation text the morning of our appointment so you know exactly when I'll arrive.</p>
+                    <span class="badge">Your Job: Relax</span>
                 </div>
             </div>
-        </section>
+
+            <div class="timeline-item">
+                <div class="time-block">Phase 02</div>
+                <div class="content-block">
+                    <h3>The On-Site Service</h3>
+                    <p>I arrive with a self-contained unit. I don't need your driveway or your garage—I can work on the street or in an office lot. I collect the keys and get to work.</p>
+                    <span class="badge">Your Job: Stay Productive</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-block">Phase 03</div>
+                <div class="content-block">
+                    <h3>The Digital Hand-Off</h3>
+                    <p>Once finished, I return your keys and a digital service report. You pay securely via phone and your car is ready for the road.</p>
+                    <span class="badge">Your Job: Drive</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        position: relative;
+        padding-left: 20px;
+    }
+
+    /* The vertical line */
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--accent);
+    }
+
+    .timeline-item {
+        display: flex;
+        gap: 2rem;
+        position: relative;
+    }
+
+    /* The dots on the line */
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -24px;
+        top: 10px;
+        width: 10px;
+        height: 10px;
+        background: var(--primary);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--primary);
+    }
+
+    .time-block {
+        font-weight: 800;
+        color: var(--primary);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        min-width: 80px;
+        padding-top: 5px;
+    }
+
+    .content-block h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .badge {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 2px 10px;
+        background: var(--accent);
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    @media (max-width: 600px) {
+        .timeline-item { flex-direction: column; gap: 0.5rem; }
+    }
+</style>
 
         <section id="services" class="tab-content">
             <div class="card">
