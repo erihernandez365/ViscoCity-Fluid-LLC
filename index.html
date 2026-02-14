@@ -238,6 +238,19 @@
             .card { padding: 1.5rem; }
             .brand-name { font-size: 1.5rem; }
         }
+
+        /* Improved Form Container */
+        .form-container {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+        
+        iframe {
+            max-width: 100%;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -303,15 +316,14 @@
                         <h3>Oil Change</h3>
                         <p>A complete on-site service featuring premium oil tailored to your vehicle (Full Synthetic, High-Mileage, or Conventional), a new filter, fluid top-offs, and a tire pressure calibration.</p>
                     </div>
-		    </div>
-		    <div class="service-item">
-			<h3>Tire Rotation</h3>
-			<p>A complete rotation of your tires.<p>
-	            </div>
-                    <div class="service-item">
-                        <h3>Fleet & Multi-Car Oil Change</h3>
-                        <p>Maximize your convenience by having the whole family's vehicles or your business fleet serviced in one visit. Discounts available for 3+ vehicles.</p>
-                    </div>
+                </div>
+                <div class="service-item">
+                    <h3>Tire Rotation</h3>
+                    <p>A complete rotation of your tires.<p>
+                </div>
+                <div class="service-item">
+                    <h3>Fleet & Multi-Car Oil Change</h3>
+                    <p>Maximize your convenience by having the whole family's vehicles or your business fleet serviced in one visit. Discounts available for 3+ vehicles.</p>
                 </div>
                 <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2.5rem 0;">
                 <h3 style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1.5rem;">Coming Soon</h3>
@@ -333,41 +345,10 @@
         </section>
 
         <section id="appointments" class="tab-content">
-            <div class="card">
-                <h2>Book Your Service</h2>
-                <div class="calendar-mock">
-                    <p style="text-align:center; font-weight:bold; margin-bottom: 1rem; color: var(--text-main); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Select Your Date & Preferred Time</p>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="date" id="service-date" style="border: 1px solid var(--border-color);">
-                        <select id="service-time" style="border: 1px solid var(--border-color);">
-                            <option>Morning (8am - 12pm)</option>
-                            <option>Afternoon (12pm - 4pm)</option>
-                            <option>Evening (4pm - 7pm)</option>
-                        </select>
-                    </div>
+            <div class="card" style="padding: 1rem;">
+                <div class="form-container">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScDSx98yVa0Jskfa11_nAZkRTsUZal-uJpig1CGeaEgyhaVfQ/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
-                <form id="booking-form">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-                        <div class="input-group"><label>Year</label><input type="text" placeholder="e.g. 2024"></div>
-                        <div class="input-group"><label>Make</label><input type="text" placeholder="e.g. Toyota"></div>
-                        <div class="input-group"><label>Model</label><input type="text" placeholder="e.g. Camry"></div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-                        <div class="input-group"><label>Engine</label><input type="text" placeholder="e.g. 2.5L 4-Cyl"></div>
-                        <div class="input-group">
-                            <label>Oil Preference</label>
-                            <select>
-                                <option>Full Synthetic</option>
-                                <option>High-Mileage (75k+)</option>
-                                <option>Conventional</option>
-                                <option>I'm Not Sure</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-group"><label>Service Location</label><input type="text" placeholder="Home or Office Address"></div>
-                    <div class="input-group"><label>Special Notes (Optional)</label><textarea rows="3"></textarea></div>
-                    <button type="button" class="submit-btn">Request Appointment</button>
-                </form>
             </div>
         </section>
 
