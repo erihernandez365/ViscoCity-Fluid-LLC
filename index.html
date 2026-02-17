@@ -10,7 +10,6 @@
 
     <style>
         :root {
-            /* Modern White Palette */
             --primary: #B8860B;        /* Professional Gold */
             --primary-hover: #966D08;
             --bg-body: #FFFFFF;        /* Clean White */
@@ -28,7 +27,6 @@
             line-height: 1.6; 
         }
 
-        /* Branding Header */
         header {
             background: var(--bg-body);
             padding: 3rem 1rem 1.5rem 1rem;
@@ -52,7 +50,6 @@
             font-weight: 600;
         }
 
-        /* Navigation Tabs */
         nav {
             display: flex;
             justify-content: center;
@@ -80,23 +77,18 @@
             letter-spacing: 1px;
         }
 
-        .tab-btn:hover {
-            color: var(--text-main);
-        }
-
+        .tab-btn:hover { color: var(--text-main); }
         .tab-btn.active {
             color: var(--primary);
-            background: #FFFBEB; /* Very light gold tint */
+            background: #FFFBEB;
         }
 
-        /* Container & Sections */
         .container { max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem; }
         .tab-content { display: none; animation: fadeIn 0.5s ease; }
         .tab-content.active { display: block; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Modern Styling Components */
         .card { 
             background: var(--bg-card); 
             padding: 2.5rem; 
@@ -125,80 +117,20 @@
             text-transform: uppercase;
         }
         
-        /* Timeline */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            position: relative;
-            padding-left: 25px;
-            margin-top: 2rem;
-        }
+        .timeline { display: flex; flex-direction: column; gap: 2rem; position: relative; padding-left: 25px; margin-top: 2rem; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border-color); }
+        .timeline-item { display: flex; gap: 2rem; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 8px; width: 10px; height: 10px; background: var(--primary); border-radius: 50%; }
+        .time-block { font-weight: 800; color: var(--primary); font-size: 0.8rem; text-transform: uppercase; min-width: 80px; padding-top: 5px; }
+        .badge { display: inline-block; margin-top: 0.8rem; padding: 4px 12px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.7rem; font-weight: bold; color: var(--primary); text-transform: uppercase; }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border-color);
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 2rem;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -29px;
-            top: 8px;
-            width: 10px;
-            height: 10px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-
-        .time-block {
-            font-weight: 800;
-            color: var(--primary);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            min-width: 80px;
-            padding-top: 5px;
-        }
-
-        .badge {
-            display: inline-block;
-            margin-top: 0.8rem;
-            padding: 4px 12px;
-            background: #FFFFFF;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-transform: uppercase;
-        }
-
-        /* Service List Styling */
         .service-list { margin-top: 2.5rem; }
         .service-item { border-left: 3px solid var(--primary); padding-left: 1.5rem; margin-bottom: 2rem; }
         .service-item h3 { margin-bottom: 0.4rem; font-size: 1.2rem; color: var(--text-main); }
         .service-item p { font-size: 0.95rem; color: var(--text-muted); }
 
-        .roadmap-card { 
-            background: #FFFFFF;
-            border: 1px solid var(--border-color); 
-            border-radius: 10px; 
-            padding: 1.5rem; 
-            text-align: center; 
-        }
+        .roadmap-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; text-align: center; }
 
-        /* Appointment Form Styling */
         .input-group { margin-bottom: 1.5rem; text-align: left;}
         label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; color: var(--text-main); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
@@ -212,8 +144,13 @@
             font-family: inherit;
             transition: 0.3s;
         }
-        input:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1); }
+        input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1); }
         
+        /* Checkbox styling */
+        .checkbox-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 0.5rem; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer; font-weight: 400; text-transform: none; }
+        .checkbox-item input { width: auto; cursor: pointer; }
+
         button.submit-btn { 
             background: var(--text-main); 
             color: #FFFFFF; 
@@ -232,7 +169,6 @@
         button.submit-btn:hover { background: var(--primary); transform: translateY(-2px); }
         button.submit-btn:disabled { background: var(--text-muted); cursor: not-allowed; }
 
-        /* Contact Page */
         .contact-info { font-size: 1.1rem; margin-bottom: 0.8rem; }
         strong { color: var(--text-main); }
 
@@ -242,11 +178,7 @@
             .brand-name { font-size: 1.5rem; }
         }
 
-        .form-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .form-container { width: 100%; max-width: 600px; margin: 0 auto; }
     </style>
 </head>
 <body>
@@ -270,7 +202,6 @@
             <div class="card">
                 <h2 style="text-align: center;">The Seamless Service Experience</h2>
                 <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">While I handle the dirty work, your life doesn't stop. Here is how we coexist on service day.</p>
-                
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="time-block">Phase 01</div>
@@ -280,7 +211,6 @@
                             <span class="badge">Your Job: Relax</span>
                         </div>
                     </div>
-
                     <div class="timeline-item">
                         <div class="time-block">Phase 02</div>
                         <div class="content-block">
@@ -289,7 +219,6 @@
                             <span class="badge">Your Job: Stay Productive</span>
                         </div>
                     </div>
-
                     <div class="timeline-item">
                         <div class="time-block">Phase 03</div>
                         <div class="content-block">
@@ -312,18 +241,18 @@
                         <h3>Oil Change</h3>
                         <p>A complete on-site service featuring premium oil tailored to your vehicle (Full Synthetic, High-Mileage, or Conventional), a new filter, fluid top-offs, and a tire pressure calibration.</p>
                     </div>
-                </div>
-                <div class="service-item">
-                    <h3>Tire Rotation</h3>
-                    <p>A complete rotation of your tires.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Fleet & Multi-Car Oil Change</h3>
-                    <p>Maximize your convenience by having the whole family's vehicles or your business fleet serviced in one visit. Discounts available for 3+ vehicles.</p>
+                    <div class="service-item">
+                        <h3>Tire Rotation</h3>
+                        <p>A complete rotation of your tires to ensure even wear and longevity.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Fleet & Multi-Car Oil Change</h3>
+                        <p>Maximize your convenience by having the whole family's vehicles or your business fleet serviced in one visit. Discounts available for 3+ vehicles.</p>
+                    </div>
                 </div>
                 <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2.5rem 0;">
                 <h3 style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1.5rem;">Coming Soon</h3>
-                <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                     <div class="roadmap-card">
                         <h4>Brake Service</h4>
                         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Pad and Disc replacement & sensor resets.</p>
@@ -343,8 +272,13 @@
         <section id="appointments" class="tab-content">
             <div class="card">
                 <h2 style="text-align: center;">Book Your Service</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">No payment required to book. I'll text you to confirm.</p>
                 
+                <div style="background: #FFFBEB; border: 1px solid var(--primary); padding: 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center;">
+                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">
+                        "We service all of Chicago Sunday–Tuesday. For mid-week requests, we'll do our best to fit you in!"
+                    </p>
+                </div>
+
                 <div class="form-container">
                     <form id="booking-form">
                         <div class="input-group">
@@ -359,10 +293,32 @@
                             <label for="car_details">Vehicle (Year, Make, Model)</label>
                             <input type="text" id="car_details" required placeholder="2022 Honda Civic">
                         </div>
+
                         <div class="input-group">
-                            <label for="appointment_date">Preferred Date/Time</label>
-                            <input type="text" id="appointment_date" required placeholder="Monday Morning or Feb 20th">
+                            <label for="license_plate">License Plate or VIN (Optional)</label>
+                            <input type="text" id="license_plate" placeholder="ABC-1234">
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">
+                                💡 Optional: Providing this helps us ensure we bring the exact oil and filter for your specific engine.
+                            </p>
                         </div>
+
+                        <div class="input-group">
+                            <label>Services Requested</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="service_type" value="Mobile Oil Change"> Mobile Oil Change
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="service_type" value="Tire Rotation"> Tire Rotation
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="appointment_date">Requested Date & Time Window</label>
+                            <input type="text" id="appointment_date" required placeholder="e.g. Monday Morning or Feb 20th">
+                        </div>
+
                         <button type="submit" id="submit-btn" class="submit-btn">Confirm Appointment</button>
                     </form>
                 </div>
@@ -377,11 +333,9 @@
                 <br>
                 <p>My passion for automotive work didn't start in a high-end shop—it started in a warehouse. After years in a fast-paced industrial environment, I found my fulfillment by working with my hands and keeping busy with tasks that required precision and care.</p>
                 <br>
-                <p>I know what it’s like to go in for a simple service and walk out two hours later after being hit with a list of "necessary" upsells. I knew there had to be a more practical, honest way to keep cars on the road.</p>
-                <br>
                 <div class="service-item">
                     <h3>My Specialty</h3>
-                    <p>Because I am a dedicated owner-operator, your vehicle is never just another number in a bay. You get the peace of mind knowing the person you booked is the person doing the work. I take my time to ensure a mess-free, professional result while you enjoy the comfort of your home. <strong>No waiting rooms, no drive time, and absolutely no upsells.</strong></p>
+                    <p>Because I am a dedicated owner-operator, your vehicle is never just another number in a bay. You get the peace of mind knowing the person you booked is the person doing the work. <strong>No waiting rooms, no drive time, and absolutely no upsells.</strong></p>
                 </div>
             </div>
         </section>
@@ -412,7 +366,6 @@
         }
 
         // SUPABASE LOGIC
-        // 1. Initialize Supabase (REPLACE WITH YOUR KEYS)
         const _supabase = supabase.createClient('https://juxkunwmrlasuttpysby.supabase.co', 'sb_publishable_O1YU-Bw_qZ-80z87zViU-Q_71S0SYS4');
 
         const bookingForm = document.getElementById('booking-form');
@@ -421,19 +374,24 @@
         bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // UI: Disable button to prevent double clicks
             submitBtn.disabled = true;
             submitBtn.innerText = "SENDING...";
 
-            // 2. Map data to your Supabase Table Columns
+            // Collect selected services from checkboxes
+            const selectedServices = Array.from(document.querySelectorAll('input[name="service_type"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+
+            // Map data to your Supabase Table Columns
             const formData = {
                 customer_name: document.getElementById('customer_name').value,
                 phone_number: document.getElementById('phone_number').value,
                 car_details: document.getElementById('car_details').value,
+                license_plate: document.getElementById('license_plate').value,
+                service_type: selectedServices || "No specific service selected",
                 appointment_date: document.getElementById('appointment_date').value
             };
 
-            // 3. Insert into the "bookings" table
             const { error } = await _supabase
                 .from('bookings')
                 .insert([formData]);
@@ -443,7 +401,6 @@
                 submitBtn.disabled = false;
                 submitBtn.innerText = "CONFIRM APPOINTMENT";
             } else {
-                // 4. Success Message (Matches your style)
                 bookingForm.innerHTML = `
                     <div style="text-align:center; padding: 40px;">
                         <h2 style="color: var(--primary);">Success! 🚗</h2>
