@@ -372,7 +372,7 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // SUPABASE LOGIC
+        // UPDATED SUPABASE LOGIC
         const _supabase = supabase.createClient('https://juxkunwmrlasuttpysby.supabase.co', 'sb_publishable_O1YU-Bw_qZ-80z87zViU-Q_71S0SYS4');
 
         const bookingForm = document.getElementById('booking-form');
@@ -388,14 +388,13 @@
                 .map(cb => cb.value)
                 .join(', ');
 
-            // Combining car details and address for your current Supabase structure
-            const fullVehicleInfo = `${document.getElementById('car_details').value} | Address: ${document.getElementById('service_address').value}`;
-
+            // Sending each piece of data to its own individual column
             const formData = {
                 customer_name: document.getElementById('customer_name').value,
                 phone_number: document.getElementById('phone_number').value,
-                car_details: fullVehicleInfo,
-                service_type: selectedServices || "No specific service selected",
+                car_details: document.getElementById('car_details').value,
+                service_address: document.getElementById('service_address').value, // Now separate
+                service_type: selectedServices || "Oil Change Only",             // Now separate
                 appointment_date: document.getElementById('appointment_date').value
             };
 
