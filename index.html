@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ViscoCity Fluid LLC</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
         :root {
             /* Modern White Palette */
@@ -195,9 +198,8 @@
             text-align: center; 
         }
 
-        /* Appointment Form */
-        .calendar-mock { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
-        .input-group { margin-bottom: 1.5rem; }
+        /* Appointment Form Styling */
+        .input-group { margin-bottom: 1.5rem; text-align: left;}
         label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; color: var(--text-main); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
         input, select, textarea { 
@@ -228,6 +230,7 @@
             letter-spacing: 1px;
         }
         button.submit-btn:hover { background: var(--primary); transform: translateY(-2px); }
+        button.submit-btn:disabled { background: var(--text-muted); cursor: not-allowed; }
 
         /* Contact Page */
         .contact-info { font-size: 1.1rem; margin-bottom: 0.8rem; }
@@ -239,17 +242,10 @@
             .brand-name { font-size: 1.5rem; }
         }
 
-        /* Improved Form Container */
         .form-container {
             width: 100%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-        }
-        
-        iframe {
-            max-width: 100%;
-            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -319,7 +315,7 @@
                 </div>
                 <div class="service-item">
                     <h3>Tire Rotation</h3>
-                    <p>A complete rotation of your tires.<p>
+                    <p>A complete rotation of your tires.</p>
                 </div>
                 <div class="service-item">
                     <h3>Fleet & Multi-Car Oil Change</h3>
@@ -345,9 +341,30 @@
         </section>
 
         <section id="appointments" class="tab-content">
-            <div class="card" style="padding: 1rem;">
+            <div class="card">
+                <h2 style="text-align: center;">Book Your Service</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">No payment required to book. I'll text you to confirm.</p>
+                
                 <div class="form-container">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScDSx98yVa0Jskfa11_nAZkRTsUZal-uJpig1CGeaEgyhaVfQ/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <form id="booking-form">
+                        <div class="input-group">
+                            <label for="customer_name">Full Name</label>
+                            <input type="text" id="customer_name" required placeholder="John Doe">
+                        </div>
+                        <div class="input-group">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="tel" id="phone_number" required placeholder="(323) 000-0000">
+                        </div>
+                        <div class="input-group">
+                            <label for="car_details">Vehicle (Year, Make, Model)</label>
+                            <input type="text" id="car_details" required placeholder="2022 Honda Civic">
+                        </div>
+                        <div class="input-group">
+                            <label for="appointment_date">Preferred Date/Time</label>
+                            <input type="text" id="appointment_date" required placeholder="Monday Morning or Feb 20th">
+                        </div>
+                        <button type="submit" id="submit-btn" class="submit-btn">Confirm Appointment</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -382,6 +399,7 @@
     </div>
 
     <script>
+        // Tab Navigation Logic
         function openTab(evt, tabName) {
             var i, tabContent, tabBtns;
             tabContent = document.getElementsByClassName("tab-content");
@@ -392,6 +410,49 @@
             evt.currentTarget.classList.add("active");
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
+
+        // SUPABASE LOGIC
+        // 1. Initialize Supabase (REPLACE WITH YOUR KEYS)
+        const _supabase = supabase.createClient('https://juxkunwmrlasuttpysby.supabase.co', 'sb_publishable_O1YU-Bw_qZ-80z87zViU-Q_71S0SYS4');
+
+        const bookingForm = document.getElementById('booking-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // UI: Disable button to prevent double clicks
+            submitBtn.disabled = true;
+            submitBtn.innerText = "SENDING...";
+
+            // 2. Map data to your Supabase Table Columns
+            const formData = {
+                customer_name: document.getElementById('customer_name').value,
+                phone_number: document.getElementById('phone_number').value,
+                car_details: document.getElementById('car_details').value,
+                appointment_date: document.getElementById('appointment_date').value
+            };
+
+            // 3. Insert into the "bookings" table
+            const { error } = await _supabase
+                .from('bookings')
+                .insert([formData]);
+
+            if (error) {
+                alert("Error: " + error.message);
+                submitBtn.disabled = false;
+                submitBtn.innerText = "CONFIRM APPOINTMENT";
+            } else {
+                // 4. Success Message (Matches your style)
+                bookingForm.innerHTML = `
+                    <div style="text-align:center; padding: 40px;">
+                        <h2 style="color: var(--primary);">Success! 🚗</h2>
+                        <p>Your request was sent. I will text you shortly to confirm the time.</p>
+                        <button onclick="location.reload()" class="tab-btn" style="margin-top:20px; border: 1px solid var(--border-color);">Make another booking</button>
+                    </div>
+                `;
+            }
+        });
     </script>
 </body>
 </html>
