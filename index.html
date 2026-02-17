@@ -10,10 +10,11 @@
 
     <style>
         :root {
-            --primary: #B8860B;        /* Professional Gold */
-            --primary-hover: #966D08;
-            --bg-body: #FFFFFF;        /* Clean White */
-            --bg-card: #F8FAFC;        /* Soft Gray-Blue */
+            --primary: #D4AF37;        /* Brighter Metallic Gold */
+            --primary-hover: #B8860B;
+            --header-dark: #0F172A;    /* Deep Navy Professional Header */
+            --bg-body: #F1F5F9;        /* Light Gray-Blue background */
+            --bg-card: #FFFFFF;        /* Pure White cards for pop */
             --text-main: #1E293B;      /* Dark Slate Text */
             --text-muted: #64748B;     /* Muted Gray Text */
             --border-color: #E2E8F0;   /* Light Divider */
@@ -28,25 +29,26 @@
         }
 
         header {
-            background: var(--bg-body);
-            padding: 3rem 1rem 1.5rem 1rem;
+            background: var(--header-dark);
+            padding: 4rem 1rem 3.5rem 1rem;
             text-align: center;
+            border-bottom: 4px solid var(--primary);
         }
 
         .brand-name {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            color: var(--text-main);
+            color: #FFFFFF;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
         }
 
         .brand-subtitle {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 5px;
-            margin-top: 8px;
+            margin-top: 12px;
             font-weight: 600;
         }
 
@@ -61,6 +63,7 @@
             border-bottom: 1px solid var(--border-color);
             backdrop-filter: blur(10px);
             flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .tab-btn {
@@ -79,8 +82,8 @@
 
         .tab-btn:hover { color: var(--text-main); }
         .tab-btn.active {
-            color: var(--primary);
-            background: #FFFBEB;
+            color: var(--header-dark);
+            background: var(--primary);
         }
 
         .container { max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem; }
@@ -95,13 +98,13 @@
             border-radius: 16px; 
             border: 1px solid var(--border-color); 
             margin-bottom: 2rem; 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
         }
 
-        h1, h2 { color: var(--text-main); margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        h1, h2 { color: var(--header-dark); margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
         
         .img-placeholder { 
-            background: #EDF2F7; 
+            background: #F8FAFC; 
             border: 1px dashed var(--border-color); 
             width: 100%; 
             height: 250px; 
@@ -118,23 +121,23 @@
         }
         
         .timeline { display: flex; flex-direction: column; gap: 2rem; position: relative; padding-left: 25px; margin-top: 2rem; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border-color); }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--primary), var(--border-color)); }
         .timeline-item { display: flex; gap: 2rem; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 8px; width: 10px; height: 10px; background: var(--primary); border-radius: 50%; }
+        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 8px; width: 10px; height: 10px; background: var(--primary); border-radius: 50%; border: 2px solid #FFFFFF; }
         .time-block { font-weight: 800; color: var(--primary); font-size: 0.8rem; text-transform: uppercase; min-width: 80px; padding-top: 5px; }
-        .badge { display: inline-block; margin-top: 0.8rem; padding: 4px 12px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.7rem; font-weight: bold; color: var(--primary); text-transform: uppercase; }
+        .badge { display: inline-block; margin-top: 0.8rem; padding: 4px 12px; background: #FFFBEB; border: 1px solid #FEF3C7; border-radius: 4px; font-size: 0.7rem; font-weight: bold; color: #92400E; text-transform: uppercase; }
 
         .service-list { margin-top: 2.5rem; }
-        .service-item { border-left: 3px solid var(--primary); padding-left: 1.5rem; margin-bottom: 2rem; }
-        .service-item h3 { margin-bottom: 0.4rem; font-size: 1.2rem; color: var(--text-main); }
+        .service-item { border-left: 4px solid var(--primary); padding-left: 1.5rem; margin-bottom: 2rem; }
+        .service-item h3 { margin-bottom: 0.4rem; font-size: 1.2rem; color: var(--header-dark); }
         .service-item p { font-size: 0.95rem; color: var(--text-muted); }
 
-        .roadmap-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; text-align: center; }
+        .roadmap-card { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; text-align: center; }
 
         /* Booking Section Styles */
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .input-group { margin-bottom: 1.5rem; text-align: left;}
-        label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; color: var(--text-main); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; color: var(--header-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
         input, select, textarea { 
             width: 100%; 
@@ -146,14 +149,14 @@
             font-family: inherit;
             transition: 0.3s;
         }
-        input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1); }
+        input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); }
         
         .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 0.5rem; }
         .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; cursor: pointer; font-weight: 400; text-transform: none; }
         .checkbox-item input { width: auto; cursor: pointer; }
 
         button.submit-btn { 
-            background: var(--text-main); 
+            background: var(--header-dark); 
             color: #FFFFFF; 
             border: none; 
             padding: 1.2rem; 
@@ -166,17 +169,18 @@
             font-size: 1rem; 
             text-transform: uppercase;
             letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
         }
-        button.submit-btn:hover { background: var(--primary); transform: translateY(-2px); }
+        button.submit-btn:hover { background: var(--primary); color: var(--header-dark); transform: translateY(-2px); }
         button.submit-btn:disabled { background: var(--text-muted); cursor: not-allowed; }
 
         .contact-info { font-size: 1.1rem; margin-bottom: 0.8rem; }
-        strong { color: var(--text-main); }
+        strong { color: var(--header-dark); }
 
         @media (max-width: 600px) {
             .timeline-item { flex-direction: column; gap: 0.5rem; }
             .card { padding: 1.5rem; }
-            .brand-name { font-size: 1.5rem; }
+            .brand-name { font-size: 1.8rem; }
             .form-row { grid-template-columns: 1fr; gap: 0; }
         }
 
@@ -243,23 +247,23 @@
                         <h3>Oil Change</h3>
                         <p>Complete mobile oil service with the proper oil for your engine (full synthetic, high-mileage, or conventional), a fresh filter, topped-off fluids, and properly set tire pressure.</p>
                         <p class="service-pricing">
-                            ▪   Starting at $85 + Oil & Filter <br>
-                            ▪   European/Luxury: Starting at $125 + Oil & Filter
+                            ▪  Starting at $85 + Oil & Filter <br>
+                            ▪  European/Luxury: Starting at $125 + Oil & Filter
                         </p>
                     </div>
                     <div class="service-item">
                         <h3>Tire Rotation</h3>
                         <p>A complete rotation of your tires to ensure even wear and longevity.</p>
                         <p class="service-pricing">
-                            ▪   Standalone Service: Starting at $55
+                            ▪  Standalone Service: Starting at $55
                         </p>
                     </div>
                     <div class="service-item">
                         <h3>Fleet & Multi-Car Oil Change</h3>
                         <p>Maximize your convenience by having the whole family's vehicles or your business fleet serviced in one visit. Discounts available for 3+ vehicles.</p>
-			<p class="service-pricing">
-			    ▪   Contact for pricing.
-			</p>
+            <p class="service-pricing">
+                 ▪  Contact for pricing.
+            </p>
                     </div>
                     </div>
                 </div>
@@ -287,7 +291,7 @@
                 <h2 style="text-align: center;">Book Your Service</h2>
                 
                 <div style="background: #FFFBEB; border: 1px solid var(--primary); padding: 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center;">
-                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">
+                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--header-dark);">
                         We service all of Chicago Sunday–Tuesday. For mid-week requests, we'll do our best to fit you in!
                     </p>
                 </div>
@@ -353,7 +357,7 @@
                 <br>
                 <div class="service-item">
                     <h3>What Sets Us Apart</h3>
-                    <p>At ViscoCity Fluid, every appointment is handled with care and attention to detail, ensuring consistent, professional service you can trust — no unnecessary upsells or waiting around.</strong></p>
+                    <p>At ViscoCity Fluid, every appointment is handled with care and attention to detail, ensuring consistent, professional service you can trust — no unnecessary upsells or waiting around.</p>
                 </div>
             </div>
         </section>
@@ -404,8 +408,8 @@
                 customer_name: document.getElementById('customer_name').value,
                 phone_number: document.getElementById('phone_number').value,
                 car_details: document.getElementById('car_details').value,
-                service_address: document.getElementById('service_address').value, // Now separate
-                service_type: selectedServices || "Oil Change Only",             // Now separate
+                service_address: document.getElementById('service_address').value, 
+                service_type: selectedServices || "Oil Change Only",             
                 appointment_date: document.getElementById('appointment_date').value
             };
 
