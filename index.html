@@ -120,13 +120,59 @@
             text-transform: uppercase;
         }
         
-        .timeline { display: flex; flex-direction: column; gap: 2rem; position: relative; padding-left: 25px; margin-top: 2rem; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--primary), var(--border-color)); }
+        /* --- TIMELINE SECTION WITH GLOW --- */
+        .timeline { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 2rem; 
+            position: relative; 
+            padding-left: 25px; 
+            margin-top: 2rem; 
+        }
+        
+        /* The Vertical Line Glow */
+        .timeline::before { 
+            content: ''; 
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+            bottom: 0; 
+            width: 2px; 
+            background: linear-gradient(to bottom, #FFD700, var(--primary), var(--border-color)); 
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.5); 
+        }
+
         .timeline-item { display: flex; gap: 2rem; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 8px; width: 10px; height: 10px; background: var(--primary); border-radius: 50%; border: 2px solid #FFFFFF; }
-        .time-block { font-weight: 800; color: var(--primary); font-size: 0.8rem; text-transform: uppercase; min-width: 80px; padding-top: 5px; }
+
+        /* The Dot Glow */
+        .timeline-item::before { 
+            content: ''; 
+            position: absolute; 
+            left: -30px; 
+            top: 8px; 
+            width: 12px; 
+            height: 12px; 
+            background: var(--primary); 
+            border-radius: 50%; 
+            border: 2px solid #FFFFFF; 
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* The Phase Text Glow */
+        .time-block { 
+            font-weight: 800; 
+            color: var(--primary); 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            min-width: 80px; 
+            padding-top: 5px; 
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+        }
+
         .badge { display: inline-block; margin-top: 0.8rem; padding: 4px 12px; background: #FFFBEB; border: 1px solid #FEF3C7; border-radius: 4px; font-size: 0.7rem; font-weight: bold; color: #92400E; text-transform: uppercase; }
 
+        /* --- SERVICES & ROADMAP --- */
         .service-list { margin-top: 2.5rem; }
         .service-item { border-left: 4px solid var(--primary); padding-left: 1.5rem; margin-bottom: 2rem; }
         .service-item h3 { margin-bottom: 0.4rem; font-size: 1.2rem; color: var(--header-dark); }
