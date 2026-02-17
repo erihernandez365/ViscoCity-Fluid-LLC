@@ -128,6 +128,7 @@
         .service-item { border-left: 3px solid var(--primary); padding-left: 1.5rem; margin-bottom: 2rem; }
         .service-item h3 { margin-bottom: 0.4rem; font-size: 1.2rem; color: var(--text-main); }
         .service-item p { font-size: 0.95rem; color: var(--text-muted); }
+        .service-pricing { font-size: 0.85rem; margin-top: 8px; font-weight: 600; color: var(--text-main); }
 
         .roadmap-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; text-align: center; }
 
@@ -242,10 +243,17 @@
                     <div class="service-item">
                         <h3>Oil Change</h3>
                         <p>A complete on-site service featuring premium oil tailored to your vehicle (Full Synthetic, High-Mileage, or Conventional), a new filter, fluid top-offs, and a tire pressure calibration.</p>
+                        <p class="service-pricing">
+                            ▪   Starting at $85 + Oil & Filter (Bundle with Tire Rotation: $115.00 <br>
+                            ▪   European/Luxury: Starting at $125 + Oil & Filter (Bundle with Rotation: $150)
+                        </p>
                     </div>
                     <div class="service-item">
                         <h3>Tire Rotation</h3>
-                        <p>A complete rotation of your tires to ensure even wear and longevity.</p>
+                        <p>A complete rotation of your tires (moving front wheels to back) to ensure even wear and longevity.</p>
+                        <p class="service-pricing">
+                            ▪   Standalone Service: Starting at $55
+                        </p>
                     </div>
                     <div class="service-item">
                         <h3>Fleet & Multi-Car Oil Change</h3>
@@ -270,7 +278,6 @@
                 </div>
             </div>
         </section>
-
         <section id="appointments" class="tab-content">
             <div class="card">
                 <h2 style="text-align: center;">Book Your Service</h2>
@@ -312,7 +319,7 @@
                             <div class="checkbox-group">
                                 <label class="checkbox-item">
                                     <input type="checkbox" name="service_type" value="Mobile Oil Change"> 
-                                    Mobile Oil Change (Starting at $85.00 + Oil and Filter)
+                                    Mobile Oil Change (Starting at $85.00)
                                 </label>
                                 <label class="checkbox-item">
                                     <input type="checkbox" name="service_type" value="Tire Rotation"> 
@@ -388,13 +395,12 @@
                 .map(cb => cb.value)
                 .join(', ');
 
-            // Sending each piece of data to its own individual column
             const formData = {
                 customer_name: document.getElementById('customer_name').value,
                 phone_number: document.getElementById('phone_number').value,
                 car_details: document.getElementById('car_details').value,
-                service_address: document.getElementById('service_address').value, // Now separate
-                service_type: selectedServices || "Oil Change Only",             // Now separate
+                service_address: document.getElementById('service_address').value,
+                service_type: selectedServices || "Oil Change Only",
                 appointment_date: document.getElementById('appointment_date').value
             };
 
