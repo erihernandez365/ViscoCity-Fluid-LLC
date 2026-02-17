@@ -131,6 +131,8 @@
 
         .roadmap-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; text-align: center; }
 
+        /* Booking Section Styles */
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .input-group { margin-bottom: 1.5rem; text-align: left;}
         label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; color: var(--text-main); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
@@ -146,9 +148,8 @@
         }
         input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1); }
         
-        /* Checkbox styling */
-        .checkbox-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 0.5rem; }
-        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer; font-weight: 400; text-transform: none; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 0.5rem; }
+        .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; cursor: pointer; font-weight: 400; text-transform: none; }
         .checkbox-item input { width: auto; cursor: pointer; }
 
         button.submit-btn { 
@@ -176,6 +177,7 @@
             .timeline-item { flex-direction: column; gap: 0.5rem; }
             .card { padding: 1.5rem; }
             .brand-name { font-size: 1.5rem; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
         }
 
         .form-container { width: 100%; max-width: 600px; margin: 0 auto; }
@@ -281,35 +283,40 @@
 
                 <div class="form-container">
                     <form id="booking-form">
-                        <div class="input-group">
-                            <label for="customer_name">Full Name</label>
-                            <input type="text" id="customer_name" required placeholder="My Name Is">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="customer_name">Full Name</label>
+                                <input type="text" id="customer_name" required placeholder="My Name Is">
+                            </div>
+                            <div class="input-group">
+                                <label for="phone_number">Phone Number</label>
+                                <input type="tel" id="phone_number" required placeholder="(323) 000-0000">
+                                <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 5px; line-height: 1.2;">
+                                    We will only contact you to confirm your appointment and vehicle information. No promotional texts.
+                                </p>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label for="phone_number">Phone Number</label>
-                            <input type="tel" id="phone_number" required placeholder="(323) 000-0000">
-                        </div>
+
                         <div class="input-group">
                             <label for="car_details">Vehicle (Year, Make, Model)</label>
                             <input type="text" id="car_details" required placeholder="2022 Honda Civic">
                         </div>
 
                         <div class="input-group">
-                            <label for="license_plate">License Plate or VIN (Optional)</label>
-                            <input type="text" id="license_plate" placeholder="ABC-1234">
-                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">
-                                💡 Optional: Providing this helps us ensure we bring the exact oil and filter for your specific engine.
-                            </p>
+                            <label for="service_address">Service Address</label>
+                            <input type="text" id="service_address" required placeholder="123 Main St, Chicago, IL">
                         </div>
 
                         <div class="input-group">
                             <label>Services Requested</label>
                             <div class="checkbox-group">
                                 <label class="checkbox-item">
-                                    <input type="checkbox" name="service_type" value="Mobile Oil Change"> Mobile Oil Change
+                                    <input type="checkbox" name="service_type" value="Mobile Oil Change"> 
+                                    Mobile Oil Change (Starting at $$$ Oil + Filter)
                                 </label>
                                 <label class="checkbox-item">
-                                    <input type="checkbox" name="service_type" value="Tire Rotation"> Tire Rotation
+                                    <input type="checkbox" name="service_type" value="Tire Rotation"> 
+                                    Tire Rotation (Starting at $$$)
                                 </label>
                             </div>
                         </div>
@@ -377,17 +384,17 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "SENDING...";
 
-            // Collect selected services from checkboxes
             const selectedServices = Array.from(document.querySelectorAll('input[name="service_type"]:checked'))
                 .map(cb => cb.value)
                 .join(', ');
 
-            // Map data to your Supabase Table Columns
+            // Combining car details and address for your current Supabase structure
+            const fullVehicleInfo = `${document.getElementById('car_details').value} | Address: ${document.getElementById('service_address').value}`;
+
             const formData = {
                 customer_name: document.getElementById('customer_name').value,
                 phone_number: document.getElementById('phone_number').value,
-                car_details: document.getElementById('car_details').value,
-                license_plate: document.getElementById('license_plate').value,
+                car_details: fullVehicleInfo,
                 service_type: selectedServices || "No specific service selected",
                 appointment_date: document.getElementById('appointment_date').value
             };
