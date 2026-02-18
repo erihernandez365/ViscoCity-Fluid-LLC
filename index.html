@@ -245,6 +245,17 @@
         }
 
         .form-container { width: 100%; max-width: 600px; margin: 0 auto; }
+/* Narrower cards for specific sections to prevent stretching */
+#about .card, #contact .card {
+    max-width: 1500px;   /* Limits the width */
+    margin-left: auto;  /* Centers the card */
+    margin-right: auto; /* Centers the card */
+}
+
+/* Optional: centered text for the contact info looks cleaner when narrow */
+#contact .card {
+    text-align: center;
+}
     </style>
 </head>
 <body>
